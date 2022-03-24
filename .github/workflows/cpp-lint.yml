@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: DingXuefeng/cpp-linter-action@master
+      - uses: shenxianpeng/cpp-linter-action@refs/pull/42/head
         id: linter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
