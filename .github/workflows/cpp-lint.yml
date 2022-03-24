@@ -18,8 +18,9 @@ jobs:
         with:
           style: file
           files-changed-only: false
-          database: abcd
+          database: build
           thread-comments: false
+          version: 12
           # to ignore all demo folder contents except for demo.cpp
           # ignore: demo|!demo/demo.cpp
 
