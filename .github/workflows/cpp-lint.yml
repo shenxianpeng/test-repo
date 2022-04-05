@@ -12,5 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: shenxianpeng/cpp-linter-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: file
