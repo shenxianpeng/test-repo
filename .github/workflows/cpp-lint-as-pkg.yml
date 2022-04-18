@@ -1,0 +1,30 @@
+on:
+  push:
+    paths-ignore: "docs/**"
+  pull_request:
+    paths-ignore: "docs/**"
+jobs:
+  cpp-linter:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install clang-tools
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          # v12 is the recommended minimum for the Visual Studio compiler
+          version: 12
+          # specifying an install path is required because
+          # Windows runners already have a certain version of LLVM installed
+          directory: ${{ runner.temp }}/llvm
+      - name: Install linter python package
+        run: python3 -m pip install git+https://github.com/shenxianpeng/cpp-linter-action@refs/pull/53/head
+      - name: run linter as a python package
+        id: linter
+        # pass the installed path to the '--version' argument
+        run: cpp-linter --version=${{ runner.temp }}/llvm
+      - name: Fail fast?!
+        if: steps.linter.outputs.checks-failed > 0
+        run: echo "Some files failed the linting checks!"
+        # for actual deployment
+        # run: exit 1
