@@ -1,27 +1,35 @@
-name: cpp-linter
+name: "Run test actions"
 
 on:
   push:
-    paths-ignore: "docs/**"
-  pull_request:
+    branches:
+      - 'master'
     paths-ignore: "docs/**"
 
 jobs:
-  cpp-linter:
+  run-cpp-lint-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: shenxianpeng/cpp-linter-action@refs/pull/53/head
-        id: linter
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          style: file
-          version: '14'
-
-      - name: Fail fast?!
-        if: steps.linter.outputs.checks-failed > 0
-        run: |
-          echo "Some files failed the linting checks!"
-        # for actual deployment
-        # run: exit 1
+    - uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.PAT_TOKEN }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 'cpp-linter',
+            repo: 'test-cpp-linter-action',
+            workflow_id: 'cpp-lint-action.yml',
+            ref: 'master'
+          })
+  run-cpp-lint-pkg:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.PAT_TOKEN }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 'cpp-linter',
+            repo: 'test-cpp-linter-action',
+            workflow_id: 'cpp-lint-package.yml',
+            ref: 'master'
+          })
