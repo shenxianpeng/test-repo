@@ -15,21 +15,8 @@ jobs:
         github-token: ${{ secrets.PAT_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
-            owner: 'cpp-linter',
-            repo: 'test-cpp-linter-action',
-            workflow_id: 'cpp-lint-action.yml',
-            ref: 'master'
-          })
-  run-cpp-lint-pkg:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/github-script@v6
-      with:
-        github-token: ${{ secrets.PAT_TOKEN }}
-        script: |
-          await github.rest.actions.createWorkflowDispatch({
-            owner: 'cpp-linter',
-            repo: 'test-cpp-linter-action',
-            workflow_id: 'cpp-lint-package.yml',
+            owner: 'shenxianpeng',
+            repo: 'test-action',
+            workflow_id: 'cpp-lint-as-pkg.yml',
             ref: 'master'
           })
