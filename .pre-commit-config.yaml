@@ -1,0 +1,8 @@
+repos:
+  - repo: https://github.com/shenxianpeng/cpp-linter-hooks
+    rev: v0.1.0
+    hooks:
+      - id: clang-format
+        args: [--style=.clang-format]
+      - id: clang-tidy
+        args: [--checks=.clang-tidy]
