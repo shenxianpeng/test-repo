@@ -33,7 +33,7 @@ jobs:
           --tidy-checks='-*' \
           --version=${{ runner.temp }}/llvm \
           --files-changed-only=false \
-          --ignore=''
+          --ignore='.github'
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
         run: echo "Some files failed the linting checks!"
