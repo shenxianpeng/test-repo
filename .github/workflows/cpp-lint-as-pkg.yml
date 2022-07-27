@@ -22,7 +22,13 @@ jobs:
       - name: run linter as a python package
         id: linter
         # pass the installed path to the '--version' argument
-        run: cpp-linter --version=${{ runner.temp }}/llvm
+        run: |
+          cpp-linter \
+          --style=file \
+          --tidy-checks='-*' \
+          --version=${{ runner.temp }}/llvm \
+          --files-changed-only=false \
+          --ignore=''
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
         run: echo "Some files failed the linting checks!"
