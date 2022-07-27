@@ -34,3 +34,28 @@ jobs:
         run: echo "Some files failed the linting checks!"
         # for actual deployment
         # run: exit 1
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install clang-tools
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: 12
+      - name: Install linter python package
+        run: python3 -m pip install git+https://github.com/shenxianpeng/cpp-linter-action@refs/pull/53/head
+      - name: run linter as a python package
+        id: linter
+        run: |
+          cpp-linter \
+          --style=file \
+          --tidy-checks='-*' \
+          --version=12 \
+          --files-changed-only=false \
+          --ignore=''
+      - name: Fail fast?!
+        if: steps.linter.outputs.checks-failed > 0
+        run: echo "Some files failed the linting checks!"
+        # for actual deployment
+        # run: exit 1
