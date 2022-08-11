@@ -23,7 +23,7 @@ jobs:
           # Windows runners already have a certain version of LLVM installed
           directory: ${{ runner.temp }}/llvm
       - name: Install linter python package
-        run: python3 -m pip install git+https://github.com/cpp-linter/cpp-linter-action@v1
+        run: python3 -m pip install git+https://github.com/cpp-linter/cpp-linter-action@backlogged-updates
       - name: run linter as a python package
         id: linter
         # pass the installed path to the '--version' argument

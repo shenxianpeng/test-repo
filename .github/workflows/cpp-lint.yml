@@ -1,22 +1,25 @@
-name: "Run test actions"
+name: cpp-linter
 
 on:
+  pull_request:
+    types: [opened, reopened]  # let PR-synchronize events be handled by push events
   push:
-    branches:
-      - 'master'
-    paths-ignore: "docs/**"
 
 jobs:
-  run-cpp-lint-action:
+  cpp-linter:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/github-script@v6
-      with:
-        github-token: ${{ secrets.PAT_TOKEN }}
-        script: |
-          await github.rest.actions.createWorkflowDispatch({
-            owner: 'shenxianpeng',
-            repo: 'test-action',
-            workflow_id: 'cpp-lint-as-pkg.yml',
-            ref: 'master'
-          })
+      - uses: actions/checkout@v3
+      - uses: cpp-linter/cpp-linter-action@backlogged-updates
+        id: linter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          style: file
+
+      - name: Fail fast?!
+        if: steps.linter.outputs.checks-failed > 0
+        run: |
+          echo "Some files failed the linting checks!"
+        # for actual deployment
+        run: exit 1
