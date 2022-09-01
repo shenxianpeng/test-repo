@@ -31,4 +31,4 @@ jobs:
         git push --delete origin ${{ inputs.tag }} || true
         git tag -a ${{ inputs.tag }} -m 'Retag ${{ inputs.tag }}'
         git push origin ${{ inputs.tag }}
-      continue-on-error: true
+      # continue-on-error: true
