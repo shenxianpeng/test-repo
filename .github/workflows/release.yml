@@ -24,7 +24,7 @@ jobs:
         fetch-depth: 0
         ref: ${{ inputs.ref }}
     - name: update tag
-      if: inputs.tag != ""
+      if: inputs.tag != ''
       run: |
         echo "${{ github.event.inputs.name }}"
         git config user.name 'github-actions'
