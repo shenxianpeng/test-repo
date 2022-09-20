@@ -18,10 +18,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: test
         run: echo "this is a test"
-      - name: install clang-format
+      - name: install clang-tool-12
         run: |
-          apt-get update -y
-          apt-get install -y clang-format-12 clang-tidy-12
+          sudo apt-get update -y
+          sudo apt-get install -y clang-format-12 clang-tidy-12
           which clang-format-12
           clang-format-12 --version
           which clang-tidy-12
