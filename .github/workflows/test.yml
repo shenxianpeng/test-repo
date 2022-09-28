@@ -25,8 +25,9 @@ jobs:
       - name: Install pip
         run: python3 -m pip install --upgrade pip
 
-      - name: ls path
+      - name: test clang-format
         run: 
+          which clang-format
           ls -l /usr/lib/llvm-12/bin/clang-format
           /usr/lib/llvm-12/bin/clang-format --version
      
