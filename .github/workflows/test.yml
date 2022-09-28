@@ -16,15 +16,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: test
-        run: echo "this is a test"
-      - name: install clang-tool 12.0.1
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y clang-format-12 clang-tidy-12
-      - name: show version
-        run: |
-          which clang-format-12
-          clang-format-12 --version
-          which clang-tidy-12
-          clang-tidy-12 --version
+
+      - name: Set up Python 3.10
+          uses: actions/setup-python@v3
+          with:
+            python-version: "3.10"
+
+      - name: Install pip
+        run: python3 -m pip install --upgrade pip
+     
+      # - name: install clang-tool 12.0.1
+      #   run: |
+      #     sudo apt-get update -y
+      #     sudo apt-get install -y clang-format-12 clang-tidy-12
+      # - name: show version
+      #   run: |
+      #     which clang-format-12
+      #     clang-format-12 --version
+      #     which clang-tidy-12
+      #     clang-tidy-12 --version
+
+      - name: run test.py
+        run: 
+          python test.py
