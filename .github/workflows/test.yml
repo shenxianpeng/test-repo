@@ -27,7 +27,7 @@ jobs:
 
       - name: ls path
         run: 
-          ls /usr/lib/llvm-12/bin/clang-format
+          ls -l /usr/lib/llvm-12/bin/clang-format
           /usr/lib/llvm-12/bin/clang-format --version
      
       # - name: install clang-tool 12.0.1
