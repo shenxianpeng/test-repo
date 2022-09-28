@@ -33,7 +33,7 @@ jobs:
         continue-on-error: true
         run:  ls -l /usr/bin/clang-format
 
-       - name: check version 1
+      - name: check version 1
         continue-on-error: true
         run: /usr/bin/clang-format --version
       
@@ -48,3 +48,4 @@ jobs:
       - name: run test.py
         run: 
           python test.py
+          ln -s /usr/lib/llvm-12/bin/clang-format /home/runner/.local/bin/clang-format
