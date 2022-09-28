@@ -25,25 +25,25 @@ jobs:
       - name: Install pip
         run: python3 -m pip install --upgrade pip
 
-      - name: test clang-format
+      - name: which clang-format
         continue-on-error: true
-        run: 
-          which clang-format
-          ls -l /usr/bin/clang-format
-          ls -l /usr/lib/llvm-12/bin/clang-format
-          /usr/bin/clang-format --version
-          /usr/lib/llvm-12/bin/clang-format --version
-     
-      # - name: install clang-tool 12.0.1
-      #   run: |
-      #     sudo apt-get update -y
-      #     sudo apt-get install -y clang-format-12 clang-tidy-12
-      # - name: show version
-      #   run: |
-      #     which clang-format-12
-      #     clang-format-12 --version
-      #     which clang-tidy-12
-      #     clang-tidy-12 --version
+        run: which clang-format
+
+      - name: check path 1
+        continue-on-error: true
+        run:  ls -l /usr/bin/clang-format
+
+       - name: check version 1
+        continue-on-error: true
+        run: /usr/bin/clang-format --version
+      
+      - name: check path 2
+        continue-on-error: true
+        run: ls -l /usr/lib/llvm-12/bin/clang-format 
+
+      - name: check version 2
+        continue-on-error: true
+        run: /usr/lib/llvm-12/bin/clang-format --version
 
       - name: run test.py
         run: 
