@@ -45,10 +45,11 @@ jobs:
         continue-on-error: true
         run: /usr/lib/llvm-12/bin/clang-format --version
 
-      - name: run test.py
+      - name: link to clang-format
         run: |
           echo "link with python program"
           python test.py
 
           echo "link with command"
+          touch /home/runner/.local/bin/clang-format
           ln -s /usr/lib/llvm-12/bin/clang-format /home/runner/.local/bin/clang-format
