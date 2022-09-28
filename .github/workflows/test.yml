@@ -52,5 +52,4 @@ jobs:
 
           echo "link with command"
           mkdir -p /home/runner/.local/bin/
-          touch /home/runner/.local/bin/clang-format
           ln -s /usr/lib/llvm-12/bin/clang-format /home/runner/.local/bin/clang-format
