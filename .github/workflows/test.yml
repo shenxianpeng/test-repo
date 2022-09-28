@@ -46,6 +46,9 @@ jobs:
         run: /usr/lib/llvm-12/bin/clang-format --version
 
       - name: run test.py
-        run: 
+        run: |
+          echo "link with python program"
           python test.py
+
+          echo "link with command"
           ln -s /usr/lib/llvm-12/bin/clang-format /home/runner/.local/bin/clang-format
