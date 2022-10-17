@@ -37,9 +37,9 @@ jobs:
       - name: output clang-tools
         run: |
           which clang-format-${{ matrix.clang-version }}
-          ls -l clang-format-${{ matrix.clang-version }}
+          whereis clang-format-${{ matrix.clang-version }}
           which clang-tidy-${{ matrix.clang-version }}
-          ls -l clang-tidy-${{ matrix.clang-version }}
+          whereis clang-tidy-${{ matrix.clang-version }}
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
