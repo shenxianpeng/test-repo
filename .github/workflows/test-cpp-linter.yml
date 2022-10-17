@@ -23,7 +23,7 @@ jobs:
       - name: Install clang-tools
         run: |
           pip install clang-tools
-          clang-tools -i ${{ matrix.clang-version }}
+          clang-tools -i ${{ matrix.clang-version }} -b
       
       - name: output clang-tools
         run: |
