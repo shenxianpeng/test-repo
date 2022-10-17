@@ -34,6 +34,12 @@ jobs:
           thread-comments: ${{ matrix.clang-version == '12' }}
           file-annotations: ${{ matrix.clang-version == '12' }}
           extra-args: -std=c++14 -Wall
+      - name: output clang-tools
+        run: |
+          which clang-format-${{ matrix.clang-version }}
+          ls -l clang-format-${{ matrix.clang-version }}
+          which clang-tidy-${{ matrix.clang-version }}
+          ls -l clang-tidy-${{ matrix.clang-version }}
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
