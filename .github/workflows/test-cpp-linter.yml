@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        clang-version: ['12']
+#         clang-version: ['12']
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
@@ -32,14 +32,27 @@ jobs:
 #           which clang-tidy-${{ matrix.clang-version }}
 #           # whereis clang-tidy-${{ matrix.clang-version }}
 
-      - name: Run linter as action
-        uses: cpp-linter/cpp-linter-action@latest
+      - name: Run cpp-linter
+        uses: cpp-linter/cpp-linter-action@v2
         id: linter
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: file
-#           files-changed-only: false
+          lines-changed-only: true
+          version: 14
+          tidy-checks: >-
+            boost-*
+            ,bugprone-*
+            ,performance-*
+            ,readability-*
+            ,portability-*
+            ,modernize-*
+            ,clang-analyzer-*
+            ,cppcoreguidelines-*
+            ,-cppcoreguidelines-avoid-magic-numbers
+            ,-readability-magic-numbers
+            
 #           # to ignore all build folder contents
 #           ignore: build
 #           # database: build
