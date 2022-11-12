@@ -85,21 +85,6 @@ void P_RecursiveSound(sector_t * sec, int soundblocks)
     }
 }
 
-//----------------------------------------------------------------------------
-//
-// PROC P_NoiseAlert
-//
-// If a monster yells at a player, it will alert other monsters to the
-// player.
-//
-//----------------------------------------------------------------------------
-
-void P_NoiseAlert(mobj_t * target, mobj_t * emmiter)
-{
-    soundtarget = target;
-    validcount++;
-    P_RecursiveSound(emmiter->subsector->sector, 0);
-}
 
 //----------------------------------------------------------------------------
 //
