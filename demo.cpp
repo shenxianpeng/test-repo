@@ -9,9 +9,6 @@ int main()
 
 
     for (;;)
-
-
-    
         break;
 
 
@@ -20,5 +17,5 @@ int main()
     return 0;
 
 
-    
+
 }
