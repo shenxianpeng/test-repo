@@ -38,7 +38,7 @@ jobs:
 #           # whereis clang-tidy-${{ matrix.clang-version }}
 
       - name: Run cpp-linter
-        uses: cpp-linter/cpp-linter-action@latest
+        uses: cpp-linter/cpp-linter-action@v2
         id: linter
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
