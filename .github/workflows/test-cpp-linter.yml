@@ -10,43 +10,22 @@ on:
 
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-#         clang-version: ['12']
-      fail-fast: false
-
-    runs-on: ${{ matrix.os }}
+  cpp-linter:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
-#       - uses: actions/setup-python@v4
-#         with:
-#           python-version: '3.10'
-#       - name: Install clang-tools
-#         run: |
-#           pip install clang-tools
-#           clang-tools -i ${{ matrix.clang-version }} -b
-      
-#       - name: output clang-tools
-#         run: |
-#           which clang-format-${{ matrix.clang-version }}
-#           # whereis clang-format-${{ matrix.clang-version }}
-#           which clang-tidy-${{ matrix.clang-version }}
-#           # whereis clang-tidy-${{ matrix.clang-version }}
-
-      - name: Run cpp-linter
-        uses: cpp-linter/cpp-linter-action@v2
+      - uses: cpp-linter/cpp-linter-action@v2
         id: linter
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: file
           lines-changed-only: true
           step-summary: true
-          version: 14
+          file-annotations: false
+          version: 16
           tidy-checks: >-
             boost-*
             ,bugprone-*
