@@ -45,6 +45,7 @@ jobs:
         with:
           style: file
           lines-changed-only: true
+          step-summary: true
           version: 14
           tidy-checks: >-
             boost-*
