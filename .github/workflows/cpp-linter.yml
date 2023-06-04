@@ -1,4 +1,4 @@
-name: test cpp-linter
+name: cpp-linter
 
 on:
   pull_request:
@@ -25,18 +25,8 @@ jobs:
           lines-changed-only: true
           step-summary: true
           file-annotations: false
-          version: 16
-          tidy-checks: >-
-            boost-*
-            ,bugprone-*
-            ,performance-*
-            ,readability-*
-            ,portability-*
-            ,modernize-*
-            ,clang-analyzer-*
-            ,cppcoreguidelines-*
-            ,-cppcoreguidelines-avoid-magic-numbers
-            ,-readability-magic-numbers
+          version: '16'
+          tidy-checks: '-*'
             
 #           # to ignore all build folder contents
 #           ignore: build
