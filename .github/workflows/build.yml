@@ -1,0 +1,11 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  call-build:
+    uses: reuse-workflows-demo/.github/workflows/build.yml@main
+    with:
+      target: stage
