@@ -6,6 +6,6 @@ on:
 
 jobs:
   call-build:
-    uses: reuse-workflows-demo/.github/workflows/build.yml@main
+    uses: shenxianpeng/reuse-workflows-demo/.github/workflows/build.yml@main
     with:
       target: stage
