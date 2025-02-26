@@ -1,6 +1,6 @@
 # Action Test Repository
 
-[![cpp-linter-master](https://github.com/shenxianpeng/test-cpp-linter-action/actions/workflows/cpp-lint-master.yaml/badge.svg)](https://github.com/shenxianpeng/test-cpp-linter-action/actions/workflows/cpp-lint-master.yaml)
+[![cpp-linter](https://github.com/shenxianpeng/test-repo/actions/workflows/cpp-linter.yml/badge.svg)](https://github.com/shenxianpeng/test-repo/actions/workflows/cpp-linter.yml)
 
 
 This is normal text.
