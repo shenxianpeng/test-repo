@@ -1,0 +1,29 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - ".github/workflows/draft-release.yml"
+  pull_request:
+    branches: [ master ]
+    paths:
+      - ".github/workflows/draft-release.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  draft-release:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: draft release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          draft: true
+          tag: ${{ github.ref }}
+          file_glob: true
+          file: clang-*/**/*
