@@ -1,12 +1,12 @@
-name: Build
+name: Draft Release
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - ".github/workflows/draft-release.yml"
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - ".github/workflows/draft-release.yml"
   workflow_dispatch:
