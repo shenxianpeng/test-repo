@@ -26,4 +26,4 @@ jobs:
           draft: true
           tag: ${{ github.ref }}
           # file_glob: true
-          file: clang-*/**/*
+          file: */**/*
