@@ -19,11 +19,21 @@ jobs:
   draft-release:
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get short SHA
+        id: sha
+        run: |
+          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
+
       - name: draft release
         uses: svenstaro/upload-release-action@v2
         with:
+          release_name: "master-${{ steps.sha.outputs.short_sha }}"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           draft: true
-          tag: ${{ github.ref }}
+          overwrite: true
+          tag: "master-${{ steps.sha.outputs.short_sha }}"
           # file_glob: true
           file: .
