@@ -25,5 +25,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           draft: true
           tag: ${{ github.ref }}
-          file_glob: true
-          file: clang-*/**/*
+          # file_glob: true
+          # file: clang-*/**/*
