@@ -1,4 +1,5 @@
 name: 'AI inference'
+
 on: workflow_dispatch
 
 jobs:
@@ -7,12 +8,10 @@ jobs:
       models: read
     runs-on: ubuntu-latest
     steps:
-      - name: Test Local Action
+      - name: AI Inference with GitHub Tools
         id: inference
         uses: actions/ai-inference@v1
         with:
-          prompt: 'Hello!'
-
-      - name: Print Output
-        id: output
-        run: echo "${{ steps.inference.outputs.response }}"
+          prompt: 'List my open pull requests and create a summary'
+          enable-github-mcp: true
+          token: ${{ secrets.USER_PAT }}
