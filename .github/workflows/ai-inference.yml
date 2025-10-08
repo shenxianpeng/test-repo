@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: AI Inference with GitHub Tools
         id: inference
-        uses: actions/ai-inference@v1
+        uses: actions/ai-inference@v2.0.1
         with:
           prompt: 'List my open pull requests and create a summary'
           enable-github-mcp: true
