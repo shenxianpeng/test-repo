@@ -1,0 +1,21 @@
+name: commit-check
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  commit-check:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+
+      - uses: commit-check/commit-check-action@fc0543792ea1ba666c86fea9792d1d72e253ca97 # v2.1.0
+        env:
+          GH_TOKEN: ${{ github.token }}
