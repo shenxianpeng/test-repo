@@ -1,0 +1,6 @@
+[commit]
+subject_capitalized = false
+subject_max_length = 72
+
+[branch]
+require_rebase_target = "origin/main"
