@@ -1,0 +1,21 @@
+# .github/workflows/ods.yml
+name: ODS AI Code Quality
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ods:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: open-delivery-spec/validate-action@v1
+        with:
+          diff-base: ${{ github.event.pull_request.base.sha }}
+          pr-body: ${{ github.event.pull_request.body }}
+          branch: ${{ github.head_ref }}
